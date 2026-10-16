@@ -10,30 +10,210 @@
   --font-khmer: 'Battambang', 'Noto Sans Khmer', serif;
   --font-moul: 'Moul', cursive;
   
+  /* Brand Accent Colors (shared across themes) */
   --primary-orange: #f15a22;
   --primary-orange-hover: #ff7043;
-  --primary-dark: #0f111a;
-  --bg-dark: #090b10;
-  --card-dark: #141724;
-  --card-border: #23283b;
-  --input-bg: #1a1e30;
-  --text-main: #f1f3f9;
-  --text-muted: #949eb5;
+  --primary-orange-subtle: rgba(241, 90, 34, 0.12);
   --accent-pink: #e94560;
   --success: #22c55e;
   --info-blue: #3b82f6;
   --warning-amber: #f59e0b;
+
+  /* Global Transition */
+  --theme-transition: background-color 0.22s ease, border-color 0.22s ease, color 0.22s ease, box-shadow 0.22s ease;
+}
+
+/* ===== DARK THEME (Default) ===== */
+:root,
+[data-theme="dark"] {
+  --bg-app: #090b10;
+  --bg-surface: #0f111a;
+  --bg-card: #141724;
+  --bg-topbar: rgba(15, 17, 26, 0.94);
+  
+  --border-main: #23283b;
+  --border-subtle: #1c2032;
+  
+  --input-bg: #1a1e30;
+  --input-border: #23283b;
+  --input-color: #ffffff;
+  --input-placeholder: #64748b;
+  
+  --text-main: #f1f3f9;
+  --text-heading: #ffffff;
+  --text-muted: #949eb5;
+  --text-secondary: #cbd5e1;
+  --label-color: #949eb5;
+  
+  --topbar-btn-bg: #1a1e30;
+  --topbar-btn-border: #2b324d;
+  --topbar-btn-text: #c8cfe0;
+  --topbar-btn-hover: #232942;
+  
+  --toggle-group-bg: #141724;
+  --toggle-group-border: #23283b;
+  --toggle-btn-color: #949eb5;
+  --toggle-btn-active-bg: #252b42;
+  --toggle-btn-active-color: #ffffff;
+  
+  --form-header-bg: linear-gradient(135deg, #181c2e 0%, #121522 100%);
+  --form-title-color: #ffffff;
+  --form-settings-btn-bg: #23283d;
+  --form-settings-btn-border: #363d59;
+  --form-settings-btn-hover: #313854;
+  
+  --quick-box-bg: rgba(241, 90, 34, 0.07);
+  --quick-box-border: rgba(241, 90, 34, 0.25);
+  --chip-bg: #1e2338;
+  --chip-border: #343c5e;
+  --chip-text: #c9d2e6;
+  
+  --calc-card-bg: #141829;
+  --calc-card-border: #282f4c;
+  --calc-label: #a4afc7;
+  --calc-val: #ffffff;
+  --calc-divider: #2b3352;
+  --calc-due: #4ade80;
+  --calc-grand: #ff9d00;
+  --calc-discount: #f87171;
+  
+  --action-bar-bg: #111420;
+  
+  --preview-panel-bg: linear-gradient(160deg, #10131e 0%, #161b2c 50%, #0d1e38 100%);
+  --preview-label-bg: rgba(255, 255, 255, 0.08);
+  --preview-label-border: rgba(255, 255, 255, 0.12);
+  --preview-label-color: rgba(255, 255, 255, 0.8);
+  --invoice-shadow: 0 16px 45px rgba(0, 0, 0, 0.55);
+  
+  --modal-overlay-bg: rgba(0, 0, 0, 0.75);
+  --modal-bg: #151928;
+  --modal-header-bg: #111422;
+  --modal-border: #23283b;
+  --modal-close-color: #8892b0;
+  --modal-box-bg: #191f33;
+  --modal-box-border: #293252;
+  --tag-chip-bg: #252d47;
+  --tag-chip-text: #d1d9ec;
+  
+  --toast-bg: #1f2438;
+  --toast-border: #363d59;
+  --toast-text: #ffffff;
+  
+  --scrollbar-track: #0d0f17;
+  --scrollbar-thumb: #252a3d;
+  --scrollbar-thumb-hover: #3b425b;
+  
+  /* Theme Switch Specific */
+  --theme-switch-bg: #141724;
+  --theme-switch-border: #282f4c;
+  
+  /* Legacy alias mappings */
+  --primary-dark: var(--bg-surface);
+  --bg-dark: var(--bg-app);
+  --card-dark: var(--bg-card);
+  --card-border: var(--border-main);
+}
+
+/* ===== LIGHT THEME ===== */
+[data-theme="light"] {
+  --bg-app: #f1f4f9;
+  --bg-surface: #ffffff;
+  --bg-card: #ffffff;
+  --bg-topbar: rgba(255, 255, 255, 0.94);
+  
+  --border-main: #e2e8f0;
+  --border-subtle: #edf2f7;
+  
+  --input-bg: #f8fafc;
+  --input-border: #cbd5e1;
+  --input-color: #0f172a;
+  --input-placeholder: #94a3b8;
+  
+  --text-main: #0f172a;
+  --text-heading: #0f172a;
+  --text-muted: #64748b;
+  --text-secondary: #334155;
+  --label-color: #475569;
+  
+  --topbar-btn-bg: #f8fafc;
+  --topbar-btn-border: #cbd5e1;
+  --topbar-btn-text: #334155;
+  --topbar-btn-hover: #eef2f6;
+  
+  --toggle-group-bg: #eef2f6;
+  --toggle-group-border: #cbd5e1;
+  --toggle-btn-color: #64748b;
+  --toggle-btn-active-bg: #ffffff;
+  --toggle-btn-active-color: #0f172a;
+  
+  --form-header-bg: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  --form-title-color: #0f172a;
+  --form-settings-btn-bg: #f1f5f9;
+  --form-settings-btn-border: #cbd5e1;
+  --form-settings-btn-hover: #e2e8f0;
+  
+  --quick-box-bg: rgba(241, 90, 34, 0.05);
+  --quick-box-border: rgba(241, 90, 34, 0.22);
+  --chip-bg: #f1f5f9;
+  --chip-border: #cbd5e1;
+  --chip-text: #334155;
+  
+  --calc-card-bg: #f8fafc;
+  --calc-card-border: #e2e8f0;
+  --calc-label: #64748b;
+  --calc-val: #0f172a;
+  --calc-divider: #e2e8f0;
+  --calc-due: #16a34a;
+  --calc-grand: #ea580c;
+  --calc-discount: #dc2626;
+  
+  --action-bar-bg: #ffffff;
+  
+  --preview-panel-bg: radial-gradient(ellipse at 50% 15%, #ffffff 0%, #edf2f7 60%, #e2e8f0 100%);
+  --preview-label-bg: rgba(255, 255, 255, 0.9);
+  --preview-label-border: rgba(15, 23, 42, 0.12);
+  --preview-label-color: #334155;
+  --invoice-shadow: 0 16px 40px rgba(15, 23, 42, 0.12), 0 2px 6px rgba(15, 23, 42, 0.05);
+  
+  --modal-overlay-bg: rgba(15, 23, 42, 0.55);
+  --modal-bg: #ffffff;
+  --modal-header-bg: #f8fafc;
+  --modal-border: #e2e8f0;
+  --modal-close-color: #64748b;
+  --modal-box-bg: #f8fafc;
+  --modal-box-border: #e2e8f0;
+  --tag-chip-bg: #e2e8f0;
+  --tag-chip-text: #1e293b;
+  
+  --toast-bg: #ffffff;
+  --toast-border: #e2e8f0;
+  --toast-text: #0f172a;
+  
+  --scrollbar-track: #f1f5f9;
+  --scrollbar-thumb: #cbd5e1;
+  --scrollbar-thumb-hover: #94a3b8;
+  
+  /* Theme Switch Specific */
+  --theme-switch-bg: #e2e8f0;
+  --theme-switch-border: #cbd5e1;
+  
+  /* Legacy alias mappings */
+  --primary-dark: var(--bg-surface);
+  --bg-dark: var(--bg-app);
+  --card-dark: var(--bg-card);
+  --card-border: var(--border-main);
 }
 
 html, body {
   width: 100%;
   min-height: 100vh;
-  background-color: var(--bg-dark);
+  background-color: var(--bg-app);
   color: var(--text-main);
   font-family: var(--font-inter);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  transition: var(--theme-transition);
 }
 
 #root {
@@ -43,6 +223,8 @@ html, body {
   padding: 0;
   display: flex;
   flex-direction: column;
+  background-color: var(--bg-app);
+  transition: var(--theme-transition);
 }
 
 button, input, select, textarea {

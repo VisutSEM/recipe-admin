@@ -68,12 +68,43 @@ export default function App() {
     return localStorage.getItem('receipt_qr_image');
   });
 
+  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
+    const saved = localStorage.getItem('receipt_app_theme');
+    if (saved === 'light' || saved === 'dark') {
+      return saved;
+    }
+    if (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      return 'dark';
+    }
+    return 'dark';
+  });
+
   const [viewMode, setViewMode] = useState<'mobile' | 'a4'>('mobile');
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isSavingImage, setIsSavingImage] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
   const printRef = useRef<HTMLDivElement | null>(null);
+
+  // Sync theme with document & localStorage
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    document.documentElement.style.colorScheme = theme;
+    localStorage.setItem('receipt_app_theme', theme);
+  }, [theme]);
+
+  // Listen to OS theme changes if user hasn't explicitly set preference
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const handleOsThemeChange = (e: MediaQueryListEvent) => {
+      const saved = localStorage.getItem('receipt_app_theme');
+      if (!saved) {
+        setTheme(e.matches ? 'dark' : 'light');
+      }
+    };
+    mediaQuery.addEventListener('change', handleOsThemeChange);
+    return () => mediaQuery.removeEventListener('change', handleOsThemeChange);
+  }, []);
 
   // Auto-save form data
   useEffect(() => {
@@ -171,6 +202,18 @@ export default function App() {
     }
   };
 
+  const handleToggleTheme = () => {
+    setTheme((prev) => {
+      const next = prev === 'dark' ? 'light' : 'dark';
+      showToast(
+        next === 'light'
+          ? '☀️ បានប្តូរទៅ Light Mode (Switched to Light)'
+          : '🌙 បានប្តូរទៅ Dark Mode (Switched to Dark)'
+      );
+      return next;
+    });
+  };
+
   return (
     <div className="app-root">
       {/* Toast Notification */}
@@ -184,6 +227,8 @@ export default function App() {
       <Header
         viewMode={viewMode}
         setViewMode={setViewMode}
+        theme={theme}
+        onToggleTheme={handleToggleTheme}
         onPrint={handlePrint}
         onSaveImage={handleSaveAsImage}
         onOpenSettings={() => setIsSettingsOpen(true)}

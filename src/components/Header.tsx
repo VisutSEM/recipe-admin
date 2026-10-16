@@ -3,6 +3,8 @@ import React from 'react';
 interface HeaderProps {
   viewMode: 'mobile' | 'a4';
   setViewMode: (mode: 'mobile' | 'a4') => void;
+  theme: 'light' | 'dark';
+  onToggleTheme: () => void;
   onPrint: () => void;
   onSaveImage: () => void;
   onOpenSettings: () => void;
@@ -14,6 +16,8 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({
   viewMode,
   setViewMode,
+  theme,
+  onToggleTheme,
   onPrint,
   onSaveImage,
   onOpenSettings,
@@ -81,6 +85,27 @@ export const Header: React.FC<HeaderProps> = ({
         >
           ⚙️ Settings
         </button>
+
+        {/* Theme Mode Switch */}
+        <button
+          type="button"
+          className={`theme-toggle-btn ${theme}`}
+          onClick={onToggleTheme}
+          title={theme === 'dark' ? 'ប្តូរទៅ Light Mode (Switch to Light)' : 'ប្តូរទៅ Dark Mode (Switch to Dark)'}
+          aria-label={`Current theme is ${theme}. Click to switch theme`}
+          role="switch"
+          aria-checked={theme === 'dark'}
+        >
+          <span className="theme-toggle-track">
+            <span className="theme-toggle-icon sun" aria-hidden="true">☀️</span>
+            <span className="theme-toggle-icon moon" aria-hidden="true">🌙</span>
+            <span className="theme-toggle-thumb" />
+          </span>
+          <span className="theme-toggle-text">
+            {theme === 'dark' ? 'Dark' : 'Light'}
+          </span>
+        </button>
+
         <button
           type="button"
           className="topbar-btn success"
