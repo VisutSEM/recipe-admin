@@ -1797,3 +1797,72 @@
     width: 100%;
   }
 }
+
+/* ===== GOOGLE ADSENSE STYLES ===== */
+.adsense-wrapper {
+  margin-top: 24px;
+  width: 100%;
+  max-width: 680px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: var(--theme-transition);
+}
+
+.adsense-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  user-select: none;
+}
+
+.adsense-box {
+  width: 100%;
+  background: var(--bg-surface);
+  border: 1px dashed var(--border-main);
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  min-height: 90px;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.adsense-box:hover {
+  border-color: var(--primary-orange);
+}
+
+.adsense-wrapper.sidebar-adsense {
+  margin: 16px 20px 24px;
+  width: calc(100% - 40px);
+  max-width: none;
+}
+
+.adsense-wrapper.preview-adsense {
+  margin-top: 32px;
+  margin-bottom: 24px;
+}
+
+.adsense-dev-note {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  color: var(--text-muted);
+  font-size: 11px;
+  padding: 8px;
+  text-align: center;
+}
+
+.adsense-dev-note span {
+  font-weight: 600;
+  color: var(--primary-orange);
+}
+

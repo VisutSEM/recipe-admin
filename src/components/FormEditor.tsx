@@ -1,6 +1,7 @@
 import React from 'react';
 import type { CompanyProfile, InvoiceData, InvoiceItem } from '../types/receipt';
 import { commonItemsSuggestions } from '../constants/presets';
+import { AdSenseBanner } from './AdSenseBanner';
 
 interface FormEditorProps {
   form: InvoiceData;
@@ -458,6 +459,9 @@ export const FormEditor: React.FC<FormEditorProps> = ({
           />
         </div>
       </section>
+
+      {/* AdSense Unit in Editor Panel */}
+      <AdSenseBanner className="sidebar-adsense" format="auto" />
 
       {/* Sticky Bottom Actions */}
       <div className="action-buttons no-print">

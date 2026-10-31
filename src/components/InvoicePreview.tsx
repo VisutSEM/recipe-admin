@@ -1,5 +1,6 @@
 import React from 'react';
 import type { CompanyProfile, InvoiceData } from '../types/receipt';
+import { AdSenseBanner } from './AdSenseBanner';
 
 interface InvoicePreviewProps {
   form: InvoiceData;
@@ -263,6 +264,9 @@ export const InvoicePreview: React.FC<InvoicePreviewProps> = ({
           {company.footerNotice || '* សូមអរគុណ! ព្រោះការទូទាត់ប្រាក់រួចហើយ ទំនិញមិនអាចផ្លាស់ប្ដូរបានទេ។'}
         </div>
       </div>
+
+      {/* Google AdSense Display Unit (safe outside invoice printRef) */}
+      <AdSenseBanner className="preview-adsense" />
     </div>
   );
 };
